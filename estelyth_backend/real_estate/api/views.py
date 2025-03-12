@@ -12,7 +12,10 @@ from .serializers import UserSerializer
 
 
 class RealEstateViewSet(
-    RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet,
+    RetrieveModelMixin,
+    ListModelMixin,
+    UpdateModelMixin,
+    GenericViewSet,
 ):
     serializer_class = UserSerializer
     queryset = User.objects.all()
