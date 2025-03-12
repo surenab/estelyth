@@ -11,7 +11,9 @@ from estelyth_backend.users.models import User
 from .serializers import UserSerializer
 
 
-class RealEstateViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
+class RealEstateViewSet(
+    RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet
+):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     lookup_field = "username"

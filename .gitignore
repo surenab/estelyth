@@ -77,7 +77,7 @@ ENV/
 .mypy_cache/
 
 
-### Node template
+### Node templateapi:user-detail
 # Logs
 logs
 *.log
