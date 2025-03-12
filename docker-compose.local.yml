@@ -44,10 +44,10 @@ services:
   redis:
     image: docker.io/redis:6
     container_name: estelyth_backend_local_redis
-    
+
     volumes:
       - estelyth_backend_local_redis_data:/data
-    
+
 
   celeryworker:
     <<: *django
