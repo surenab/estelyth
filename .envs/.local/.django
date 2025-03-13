@@ -12,3 +12,8 @@ REDIS_URL=redis://redis:6379/0
 # Flower
 CELERY_FLOWER_USER=debug
 CELERY_FLOWER_PASSWORD=debug
+
+# GDAL
+GDAL_LIBRARY_PATH=/usr/lib/aarch64-linux-gnu/libgdal.so
+
+DJANGO_DEBUG=True

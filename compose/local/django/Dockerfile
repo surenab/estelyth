@@ -11,14 +11,26 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
   # psycopg dependencies
-  libpq-dev
+  python3-gdal \
+  python3-dev \
+  libgeos-dev \
+  libproj-dev \
+  libgdal-dev \
+  libpq-dev \
+  gdal-bin \
+  curl
+
+
+
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
 
+
+
 # Create Python Dependency and Sub-Dependency Wheels.
-RUN pip wheel --wheel-dir /usr/src/app/wheels  \
-  -r ${BUILD_ENVIRONMENT}.txt
+# RUN pip wheel --wheel-dir /usr/src/app/wheels  \
+#   -r ${BUILD_ENVIRONMENT}.txt
 
 
 # Python 'run' stage
@@ -58,11 +70,26 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction
 # copy python dependency wheels from python-build-stage
-COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
+# COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 
 # use wheels to install python dependencies
-RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
-  && rm -rf /wheels/
+# RUN uv pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
+#   && rm -rf /wheels/
+
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  python3-dev \
+  libgeos-dev \
+  libproj-dev \
+  gdal-bin \
+  libgdal-dev
+
+COPY ./requirements .
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN pip install uv
+RUN uv pip install --system -r ${BUILD_ENVIRONMENT}.txt
+
+
 
 COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
