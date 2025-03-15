@@ -1,12 +1,14 @@
-from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
+
+User = get_user_model()
 
 
 class Seller(models.Model):
     seller_id = models.IntegerField(unique=True)
     # Optional relation to Django's built-in user model
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

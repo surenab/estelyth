@@ -11,8 +11,8 @@ router = DefaultRouter() if settings.DEBUG else SimpleRouter()
 
 router.register("users", UserViewSet, basename="user")
 router.register("real-estate", RealEstateViewSet, basename="real_estate")
-router.register("addresses", AddressViewSet, basename="addresses")
-router.register("countries", CountriesViewSet, basename="countries")
+router.register("addresses", AddressViewSet, basename="address")
+router.register("countries", CountriesViewSet, basename="country")
 
 app_name = "api"
 urlpatterns = router.urls
