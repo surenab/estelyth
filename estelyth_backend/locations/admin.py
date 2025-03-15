@@ -7,7 +7,15 @@ from .models import Address
 
 @admin.register(Address)
 class AddressAdmin(GISModelAdmin):
-    list_display = ("address1", "city", "country", "postal_code")
+    list_display = (
+        "address1",
+        "address2",
+        "city",
+        "county",
+        "country",
+        "postal_code",
+        "display_location",
+    )
     search_fields = (
         "address1",
         "address2",
@@ -31,16 +39,22 @@ class AddressAdmin(GISModelAdmin):
                     "postal_code",
                     "local_authority",
                     "country",
-                )
+                ),
             },
         ),
         (
             "Location",
             {
                 "fields": ("location",),
-                "classes": (
-                    "collapse",
-                ),  # Collapse the location field by default if desired
+                "classes": ("collapse",),  # Collapse the location field by default if desired
             },
         ),
     )
+
+    @admin.display(
+        description="Coordinates",
+    )
+    def display_location(self, obj):
+        if obj.location:
+            return f"({obj.location.x}, {obj.location.y})"
+        return "No Location"

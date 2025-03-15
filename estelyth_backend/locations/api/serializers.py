@@ -9,6 +9,7 @@ class AddressSerializer(GeoFeatureModelSerializer):
         model = Address
         geo_field = "location"
         fields = [
+            "id",
             "address1",
             "address2",
             "address3",
@@ -27,6 +28,4 @@ class CountrySerializer(serializers.Serializer):
     flag = serializers.SerializerMethodField()
 
     def get_flag(self, obj):
-        return (
-            f"https://flagcdn.com/w320/{obj['code'].lower()}.png"  # Standard flag URL
-        )
+        return f"https://flagcdn.com/w320/{obj['code'].lower()}.png"  # Standard flag URL

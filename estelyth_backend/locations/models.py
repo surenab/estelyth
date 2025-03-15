@@ -16,7 +16,12 @@ class Address(models.Model):
     country = CountryField(blank_label="(select country)")
     local_authority = models.CharField(max_length=100, blank=True, default="")
     # GeoDjango PointField for spatial queries (SRID 4326 for WGS84)
-    location = geomodels.PointField(geography=True, blank=True, srid=4326, null=True)
+    location = geomodels.PointField(
+        geography=True,
+        blank=True,
+        srid=4326,
+        null=True,
+    )
 
     def __str__(self):
         return f"{self.address1 or self.city}, {self.country.name}"
