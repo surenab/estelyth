@@ -13,7 +13,10 @@ class Category(models.Model):
         verbose_name="Parent Category",
     )
     slug = models.SlugField(
-        max_length=300, unique=True, blank=True, help_text="Auto-generated from the name if left blank."
+        max_length=300,
+        unique=True,
+        blank=True,
+        help_text="Auto-generated from the name if left blank.",
     )
     description = models.TextField(
         blank=True,
