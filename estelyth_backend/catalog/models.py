@@ -34,7 +34,6 @@ class Category(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Active?")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Updated At")
-    """"fndgjkfndgjkfesdbn gkfdnfjkdn vfjklfedn fvjkdaxnv jkfbnfjkdn gvjkfdngjkldn gfvjklrdn gjkl"""
 
     class Meta:
         ordering = ["name"]

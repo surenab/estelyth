@@ -34,10 +34,8 @@ repos:
       # Linter
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
-        stages: [pre-commit, pre-push] 
       # Formatter
       - id: ruff-format
-        stages: [pre-commit, pre-push] 
 
   - repo: https://github.com/Riverside-Healthcare/djLint
     rev: v1.36.4
