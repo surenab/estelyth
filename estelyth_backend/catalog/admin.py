@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from .models import Category
 
 
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "parent", "slug", "is_active", "created_at", "updated_at")
     list_filter = ("is_active", "parent")
@@ -19,6 +20,3 @@ class CategoryAdmin(admin.ModelAdmin):
         if not obj.slug:
             obj.slug = slugify(obj.name)
         super().save_model(request, obj, form, change)
-
-
-admin.site.register(Category, CategoryAdmin)
