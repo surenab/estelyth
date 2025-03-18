@@ -35,10 +35,9 @@ class TestCategoryViewSet:
 
     def test_get_category(self, category: Category, api_rf: APIRequestFactory):
         view = CategoryViewSet.as_view({"get": "retrieve"})
-        url = f"/api/v1/categories/{category.pk}/"
+        url = "/api/v1/categories/"
         request = api_rf.get(url)
         response = view(request, pk=category.pk)
-
         assert response.status_code == status.HTTP_200_OK
         assert response.data == CategorySerializer(category).data
 
