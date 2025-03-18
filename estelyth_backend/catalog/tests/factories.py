@@ -17,7 +17,7 @@ class CategoryFactory(DjangoModelFactory):
         lambda o: slugify(o.name),
     )  # Automatically generate a slug based on the name
     description = factory.Faker("sentence")  # Random sentence as description
-    is_active = factory.Faker("boolean", chance_of_getting_true=80)  # 80% chance of being active
+    is_active = factory.Faker("boolean", chance_of_getting_true=100)  # 80% chance of being active
     created_at = factory.Faker("date_this_year")  # Random date this year
     updated_at = factory.Faker("date_this_month")  # Random date this month
 
