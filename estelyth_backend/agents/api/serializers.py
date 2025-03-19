@@ -35,8 +35,6 @@ class SellerSerializer(serializers.ModelSerializer):
         if self.instance is None:  # Creation
             if "user" not in data or data["user"] is None:
                 raise serializers.ValidationError({"user": "This field is required during creation."})
-        # else:  # Update
-        #     data.pop("user", None)  # Remove 'user' if present
         return data
 
     def create(self, validated_data):
