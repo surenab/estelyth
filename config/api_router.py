@@ -4,6 +4,7 @@ from rest_framework.routers import SimpleRouter
 
 from estelyth_backend.agents.api.views import CompanyViewSet
 from estelyth_backend.agents.api.views import SellerViewSet
+from estelyth_backend.catalog.api.views import CategoryViewSet
 from estelyth_backend.locations.api.views import AddressViewSet
 from estelyth_backend.locations.api.views import CountriesViewSet
 from estelyth_backend.real_estate.api.views import RealEstateViewSet
@@ -17,6 +18,7 @@ router.register("addresses", AddressViewSet, basename="address")
 router.register("countries", CountriesViewSet, basename="country")
 router.register("sellers", SellerViewSet, basename="seller")
 router.register("companies", CompanyViewSet, basename="company")
+router.register("categories", CategoryViewSet, basename="category")
 
 app_name = "api"
 urlpatterns = router.urls
