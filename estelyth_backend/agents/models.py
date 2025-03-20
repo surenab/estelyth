@@ -27,7 +27,12 @@ class Company(models.Model):
 
 
 class Seller(models.Model):
-    seller_id = models.PositiveIntegerField(unique=True, help_text="Scraped seller ID from daft.ie")
+    seller_id = models.PositiveIntegerField(
+        unique=True,
+        help_text="Scraped seller ID from daft.ie",
+        null=True,
+        blank=True,
+    )
 
     user = models.OneToOneField(
         User,
