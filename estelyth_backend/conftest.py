@@ -1,5 +1,9 @@
 import pytest
 
+from estelyth_backend.agents.models import Company
+from estelyth_backend.agents.models import Seller
+from estelyth_backend.agents.tests.factories import CompanyFactory
+from estelyth_backend.agents.tests.factories import SellerFactory
 from estelyth_backend.catalog.models import Category
 from estelyth_backend.catalog.tests.factories import CategoryFactory
 from estelyth_backend.locations.models import Address
@@ -32,6 +36,16 @@ def admin(db) -> User:
 @pytest.fixture
 def address(db) -> Address:
     return AddressFactory()
+
+
+@pytest.fixture
+def company(db) -> Company:
+    return CompanyFactory()
+
+
+@pytest.fixture
+def seller(db) -> Seller:
+    return SellerFactory()
 
 
 @pytest.fixture
